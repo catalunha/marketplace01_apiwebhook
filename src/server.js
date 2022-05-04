@@ -41,13 +41,13 @@ urls:['/','/cob/pix','/cob/list','/test']
 });
 
 app.post('/test', async (req,res)=>{
-  const user = await Parse.User.logIn("marciocatalunha@gmail.com", "123456");
-  console.log(user);
-  console.log('recebendo simulated webhook...'); 
-  console.log('req.user');
-  console.log(user);  
-  console.log(user.sessionToken);  
-  console.log(user.get('sessionToken')); 
+  // const user = await Parse.User.logIn("marciocatalunha@gmail.com", "123456");
+  // console.log(user);
+  // console.log('recebendo simulated webhook...'); 
+  // console.log('req.user');
+  // console.log(user);  
+  // console.log(user.sessionToken);  
+  // console.log(user.get('sessionToken')); 
   const PixReceived = Parse.Object.extend('PixReceived');
   const pixReceived = new PixReceived();
   for(const pix of req.body.pix){
@@ -59,7 +59,7 @@ app.post('/test', async (req,res)=>{
       pixReceived.set('valor',pix.valor);
       pixReceived.set('horario',new Date(pix.horario));
       pixReceived.set('infoPagador',pix.infoPagador);
-      const result = await pixReceived.save(null,{sessionToken:user.get('sessionToken')});
+      const result = await pixReceived.save(null,{sessionToken:process.env.b4a_user_sessionToken});
       console.log('PixReceived: id created',result.id);
     } catch (error) {
       console.log('PixReceived: error');

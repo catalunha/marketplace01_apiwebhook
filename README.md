@@ -459,3 +459,5 @@ nao esqueça de fazer isto no servidor tb
 catalunha@pop-os:~/myapp/marketplace01/aws$ ssh -i keyparwebhook.pem ubuntu@44.197.92.210
 ubuntu@ip-172-31-30-120:~$ cd marketplace01_apiwebhook/
 ubuntu@ip-172-31-30-120:~/marketplace01_apiwebhook$ git pull origin master; pm2 restart src/server.js ; pm2 logs
+
+ubuntu@ip-172-31-30-120:~/marketplace01_apiwebhook$ export b4a_user_sessionToken="r:b17870e3a25a46437432c09acb38ff8a"
