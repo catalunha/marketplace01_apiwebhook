@@ -105,7 +105,7 @@ app.post('/webhook(/pix)?',async (req,res)=>{
       pixReceived.set('chave',pix.chave);
       pixReceived.set('valor',pix.valor);
       pixReceived.set('horario',new Date(pix.horario));
-      pixReceived.set('infoPagador',pix.infoPagador);
+      pixReceived.set('infoPagador',pix.infoPagador===undefined?'':pix.infoPagador);
       const result = await pixReceived.save();
       console.log('PixReceived: id created',result.id);
     } catch (error) {
