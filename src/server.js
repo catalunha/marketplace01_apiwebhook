@@ -12,16 +12,16 @@ const Parse = require('parse/node');
 Parse.initialize("AfVRhNjnT7JtlMavwEqXGUS44yAR9miujqadIdXV", "PjagB5OSyAihG7AYWLkQ0RiVRhwVfbOLMWFnCmrq");
 Parse.serverURL = 'https://parseapi.back4app.com';
 
-const Order = Parse.Object.extend("Order");
-const query = new Parse.Query(Order);
-query.get("Y6FxfDiQ3C")
-.then((order) => {
-  console.log('order:');
-  console.log(order);
-}, (error) => {
-  console.log('order: Error');
-  console.log(error);
-});
+// const Order = Parse.Object.extend("Order");
+// const query = new Parse.Query(Order);
+// query.get("Y6FxfDiQ3C")
+// .then((order) => {
+//   console.log('order:');
+//   console.log(order);
+// }, (error) => {
+//   console.log('order: Error');
+//   console.log(error);
+// });
 
 const GNet = require('./gnet/gnet')
 
