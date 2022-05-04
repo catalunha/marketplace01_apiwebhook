@@ -55,7 +55,7 @@ app.post('/test', async (req,res)=>{
       pixReceived.set('valor',pix.valor);
       pixReceived.set('horario',new Date(pix.horario));
       pixReceived.set('infoPagador',pix.infoPagador);
-      const result = await pixReceived.save();
+      const result = await pixReceived.save(null,{ useMasterKey: true });
       console.log('PixReceived: id created',result.id);
     } catch (error) {
       console.log('PixReceived: error');
