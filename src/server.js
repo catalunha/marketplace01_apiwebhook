@@ -6,7 +6,7 @@ if(process.env.node_env!=="prod"){
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const Parse = require('parse');
+const Parse = require('parse/node');
 
 //javascriptKey is required only if you have it on server.
 Parse.initialize("AfVRhNjnT7JtlMavwEqXGUS44yAR9miujqadIdXV", "PjagB5OSyAihG7AYWLkQ0RiVRhwVfbOLMWFnCmrq");
