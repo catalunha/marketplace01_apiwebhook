@@ -25,13 +25,16 @@ urls:['/','/cob/pix','/cob/list','/test']
 });
 app.post('/test',(req,res)=>{
   console.log('recebendo simulated webhook...'); 
+  console.log(req.body); 
   console.log(req.body.pix); 
   console.log(typeof req.body); 
   console.log(typeof req.body.pix); 
   // const pixList = JSON.parse(req.body.pix);
   for(const pix in req.body){
     console.log(pix);
-  const pixjson = JSON.parse(req.body.pix);
+    console.log(pix.endToEndId);
+    const pixjson = JSON.parse(pix);
+    console.log(pixjson);
   console.log(pixjson.endToEndId);
   }
   // res.send(req.body);
