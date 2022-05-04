@@ -93,9 +93,27 @@ app.get('/cob/list',async (req,res)=>{
 });
 
 app.post('/webhook(/pix)?',async (req,res)=>{
-  console.log('recebendo webhook...'); 
+  console.log('Recebendo webhook pix da GNet ...'); 
   console.log(req.body);
-  res.send('webhook: Ok');
+  const PixReceived = Parse.Object.extend('PixReceived');
+  const pixReceived = new PixReceived();
+  for(const pix of req.body.pix){
+    try {
+      console.log('PixReceived: creating for txid ',pix.txid);
+      pixReceived.set('endToEndId',pix.endToEndId);
+      pixReceived.set('txid',pix.txid);
+      pixReceived.set('chave',pix.chave);
+      pixReceived.set('valor',pix.valor);
+      pixReceived.set('horario',new Date(pix.horario));
+      pixReceived.set('infoPagador',pix.infoPagador);
+      const result = await pixReceived.save();
+      console.log('PixReceived: id created',result.id);
+    } catch (error) {
+      console.log('PixReceived: error');
+      console.log(error);
+    }
+  }
+  res.send('Webhook: processado...');
 });
 
 
