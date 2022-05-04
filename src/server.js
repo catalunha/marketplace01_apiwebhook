@@ -99,6 +99,9 @@ app.post('/webhook(/pix)?',async (req,res)=>{
   console.log(req.body);
   console.log('req.user');
   console.log(req.user);  
+  //
+  console.log(req.user.sessionToken);  
+  console.log(req.user.get('sessionToken'));  
   const PixReceived = Parse.Object.extend('PixReceived');
   const pixReceived = new PixReceived();
   for(const pix of req.body.pix){
