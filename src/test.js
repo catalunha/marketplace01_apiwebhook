@@ -27,6 +27,7 @@ for(const pix of obj.pix){
   console.log(pix.txid);
   console.log(pix.chave);
   console.log(pix.valor);
+  console.log(new Date(pix.horario));
   console.log(pix.horario);
   // const pixjson = JSON.parse(pix);
   // console.log(pixjson.endToEndId);

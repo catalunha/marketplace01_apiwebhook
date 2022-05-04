@@ -454,3 +454,5 @@ git pull origin master; pm2 restart src/server.js ; pm2 logs
 
 # Parse
 $ npm i parse
+nao esqueça de fazer isto no servidor tb
+

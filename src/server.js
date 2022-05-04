@@ -39,11 +39,27 @@ app.get('/',(req,res)=>{
 urls:['/','/cob/pix','/cob/list','/test']
 });
 });
+
 app.post('/test',(req,res)=>{
   console.log('recebendo simulated webhook...'); 
+  const PixReceived = Parse.Object.extend('PixReceived');
+  const pixReceived = new PixReceived();
   for(const pix of req.body.pix){
-    console.log(pix);
-    console.log(pix.endToEndId);
+    try {
+      console.log('PixReceived: creating for txid ',pix.txid);
+      pixReceived.set('endToEndId',pix.endToEndId);
+      pixReceived.set('txid',pix.txid);
+      pixReceived.set('chave',pix.chave);
+      pixReceived.set('valor',pix.valor);
+      pixReceived.set('horario',new Date(pix.horario));
+      pixReceived.set('infoPagador',pix.infoPagador);
+      const result = await pixReceived.save();
+      console.log('PixReceived: id created',result.id);
+
+    } catch (error) {
+      console.log('PixReceived: error in ',pix.txid);
+      console.log(error);
+    }
   }
   // res.send(req.body);
   res.send('processado...');
