@@ -9,19 +9,9 @@ const bodyParser = require('body-parser');
 const Parse = require('parse/node');
 
 //javascriptKey is required only if you have it on server.
-Parse.initialize("AfVRhNjnT7JtlMavwEqXGUS44yAR9miujqadIdXV", "PjagB5OSyAihG7AYWLkQ0RiVRhwVfbOLMWFnCmrq");
+Parse.initialize(process.env.b4a_applicationId,process.env.b4a_javaScriptKey);
 Parse.serverURL = 'https://parseapi.back4app.com';
 
-// const Order = Parse.Object.extend("Order");
-// const query = new Parse.Query(Order);
-// query.get("Y6FxfDiQ3C")
-// .then((order) => {
-//   console.log('order:');
-//   console.log(order);
-// }, (error) => {
-//   console.log('order: Error');
-//   console.log(error);
-// });
 
 const GNet = require('./gnet/gnet')
 
@@ -59,7 +49,7 @@ app.post('/test', async (req,res)=>{
       pixReceived.set('valor',pix.valor);
       pixReceived.set('horario',new Date(pix.horario));
       pixReceived.set('infoPagador',pix.infoPagador);
-      const result = await pixReceived.save(null,{sessionToken:process.env.b4a_user_sessionToken});
+      const result = await pixReceived.save(null,{sessionToken:process.env.b4a_user_root_sessionToken});
       console.log('PixReceived: id created',result.id);
     } catch (error) {
       console.log('PixReceived: error');
@@ -111,7 +101,7 @@ app.post('/webhook(/pix)?',async (req,res)=>{
       pixReceived.set('horario',new Date(pix.horario));
       console.log(pix.infoPagador===undefined?'...':pix.infoPagador);
       pixReceived.set('infoPagador',(pix.infoPagador===undefined?'...':pix.infoPagador));
-      const result = await pixReceived.save();
+      const result = await pixReceived.save(null,{sessionToken:process.env.b4a_user_root_sessionToken});
       console.log('PixReceived: id created',result.id);
     } catch (error) {
       console.log('PixReceived: error');
@@ -124,5 +114,5 @@ app.post('/webhook(/pix)?',async (req,res)=>{
 
 
 app.listen(8000,()=>{
-  console.log('APP Pix Running...')
+  console.log('APP Pix. Port 8000. Running...')
 });
