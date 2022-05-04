@@ -448,3 +448,9 @@ app.listen(8000,()=>{
     }
   ]
 }
+
+git pull origin master; pm2 restart src/server.js ; pm2 logs
+
+
+# Parse
+$ npm i parse
