@@ -25,7 +25,8 @@ urls:['/','/cob/pix','/cob/list','/test']
 });
 app.post('/test',(req,res)=>{
   console.log('recebendo simulated webhook...'); 
-  console.log(req.body);
+  res.send(req.body);
+
 });
 
 app.get('/cob/pix',async (req,res)=>{
