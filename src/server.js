@@ -18,7 +18,18 @@ app.use(bodyParser.json());
 
 const gnetAlready = GNet();
 
-app.get('/',async (req,res)=>{
+app.get('/',(req,res)=>{
+	res.send({
+urls:['/','/cob/pix','/cob/list','/test']
+});
+});
+app.get('/test',(req,res)=>{
+  console.log('recebendo simulated webhook...'); 
+  console.log(req.body);
+});
+
+app.get('/cob/pix',async (req,res)=>{
+  console.log('/cob/pix: gerando cob pix');
   const gnet = await gnetAlready;
   const dataCob={
     "calendario": {
@@ -36,13 +47,15 @@ app.get('/',async (req,res)=>{
   res.render('qrcode',{qrcodeImage:resQRCode.data.imagemQrcode})
 });
 
-app.get('/cobs',async (req,res)=>{
+app.get('/cob/list',async (req,res)=>{
+  console.log('listando cobs');
   const gnet = await gnetAlready;
   const resCob = await gnet.get('/v2/cob?inicio=2022-05-01T00:00:00Z&fim=2022-05-03T23:59:00Z');
   res.send(resCob.data);
 });
 
-app.get('/webhook(/pix)?',async (req,res)=>{
+app.post('/webhook(/pix)?',async (req,res)=>{
+  console.log('recebendo webhook...'); 
   console.log(req.body);
   res.send('webhook: Ok');
 });
