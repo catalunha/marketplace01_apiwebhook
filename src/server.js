@@ -42,6 +42,7 @@ urls:['/','/cob/pix','/cob/list','/test']
 
 app.post('/test', async (req,res)=>{
   const user = await Parse.User.logIn("marciocatalunha@gmail.com", "123456");
+  console.log(user);
   console.log('recebendo simulated webhook...'); 
   console.log('req.user');
   console.log(req.user);
