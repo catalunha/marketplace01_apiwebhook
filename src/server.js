@@ -55,7 +55,6 @@ app.post('/test', async (req,res)=>{
       pixReceived.set('infoPagador',pix.infoPagador);
       const result = await pixReceived.save();
       console.log('PixReceived: id created',result.id);
-
     } catch (error) {
       console.log('PixReceived: error in ',pix.txid);
       console.log(error);
