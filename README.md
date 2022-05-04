@@ -423,6 +423,20 @@ app.listen(8000,()=>{
 
 
 # Exemplo webhook retorn
+
+ {
+  pix: [
+    {
+      endToEndId: 'E00360305202205040852796c377358c',
+      txid: 'a032cf3c9f4c4d889f342df73608fae4',
+      chave: 'marciocatalunha@gmail.com',
+      valor: '0.01',
+      horario: '2022-05-04T11:52:57.000Z'
+    }
+  ]
+}
+
+
 {
   "pix": [
     {
