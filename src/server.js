@@ -29,7 +29,7 @@ app.post('/test',(req,res)=>{
   console.log(typeof req.body); 
   console.log(typeof req.body.pix); 
   // const pixList = JSON.parse(req.body.pix);
-  for(const pix in req.body.pix){
+  for(const pix in req.body){
     console.log(pix);
   const pixjson = JSON.parse(req.body.pix);
   console.log(pixjson.endToEndId);
