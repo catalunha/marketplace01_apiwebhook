@@ -42,6 +42,8 @@ urls:['/','/cob/pix','/cob/list','/test']
 
 app.post('/test', async (req,res)=>{
   console.log('recebendo simulated webhook...'); 
+  console.log('req.user');
+  console.log(req.user);
   const PixReceived = Parse.Object.extend('PixReceived');
   const pixReceived = new PixReceived();
   for(const pix of req.body.pix){
@@ -52,11 +54,11 @@ app.post('/test', async (req,res)=>{
       pixReceived.set('chave',pix.chave);
       pixReceived.set('valor',pix.valor);
       pixReceived.set('horario',new Date(pix.horario));
-      pixReceived.set('infoPagador',pix.infoPagador===undefined?'':pix.infoPagador);
+      pixReceived.set('infoPagador',pix.infoPagador);
       const result = await pixReceived.save();
       console.log('PixReceived: id created',result.id);
     } catch (error) {
-      console.log('PixReceived: error in ',pix.txid);
+      console.log('PixReceived: error');
       console.log(error);
     }
   }
