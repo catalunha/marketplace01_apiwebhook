@@ -25,6 +25,7 @@ urls:['/','/cob/pix','/cob/list','/test']
 });
 app.post('/test',(req,res)=>{
   console.log('recebendo simulated webhook...'); 
+  console.log(req.body.pix); 
   const pixList = JSON.parse(req.body.pix);
   for(const pix in pixList){
     console.log(pix);
