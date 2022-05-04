@@ -23,7 +23,7 @@ app.get('/',(req,res)=>{
 urls:['/','/cob/pix','/cob/list','/test']
 });
 });
-app.get('/test',(req,res)=>{
+app.post('/test',(req,res)=>{
   console.log('recebendo simulated webhook...'); 
   console.log(req.body);
 });
