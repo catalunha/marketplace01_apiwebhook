@@ -40,7 +40,7 @@ urls:['/','/cob/pix','/cob/list','/test']
 });
 });
 
-app.post('/test',(req,res)=>{
+app.post('/test', async (req,res)=>{
   console.log('recebendo simulated webhook...'); 
   const PixReceived = Parse.Object.extend('PixReceived');
   const pixReceived = new PixReceived();
