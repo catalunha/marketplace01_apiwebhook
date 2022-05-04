@@ -45,7 +45,9 @@ app.post('/test', async (req,res)=>{
   console.log(user);
   console.log('recebendo simulated webhook...'); 
   console.log('req.user');
-  console.log(req.user);
+  console.log(req.user);  
+  console.log(req.user.sessionToken);  
+  console.log(req.user.get('sessionToken')); 
   const PixReceived = Parse.Object.extend('PixReceived');
   const pixReceived = new PixReceived();
   for(const pix of req.body.pix){
@@ -97,11 +99,6 @@ app.get('/cob/list',async (req,res)=>{
 app.post('/webhook(/pix)?',async (req,res)=>{
   console.log('Recebendo webhook pix da GNet ...'); 
   console.log(req.body);
-  console.log('req.user');
-  console.log(req.user);  
-  //
-  console.log(req.user.sessionToken);  
-  console.log(req.user.get('sessionToken'));  
   const PixReceived = Parse.Object.extend('PixReceived');
   const pixReceived = new PixReceived();
   for(const pix of req.body.pix){
