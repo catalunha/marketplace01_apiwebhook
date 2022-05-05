@@ -25,6 +25,8 @@ app.use(bodyParser.json());
 // const gnetAlready = GNet();
 
 app.get('/',(req,res)=>{
+  console.log('/ listando rotas');
+
 	res.send({
 urls:['/','/cob/pix','/cob/list','/test']
 });
