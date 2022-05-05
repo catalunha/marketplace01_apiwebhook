@@ -22,7 +22,7 @@ app.set('views','src/views');
 
 app.use(bodyParser.json());
 
-const gnetAlready = GNet();
+// const gnetAlready = GNet();
 
 app.get('/',(req,res)=>{
 	res.send({
@@ -60,7 +60,8 @@ app.post('/test', async (req,res)=>{
 
 app.get('/cob/pix',async (req,res)=>{
   console.log('/cob/pix: gerando cob pix');
-  const gnet = await gnetAlready;
+  // const gnet = await gnetAlready;
+  const gnet = await GNet();
   const dataCob={
     "calendario": {
       "expiracao": 3600
@@ -79,7 +80,8 @@ app.get('/cob/pix',async (req,res)=>{
 
 app.get('/cob/list',async (req,res)=>{
   console.log('listando cobs');
-  const gnet = await gnetAlready;
+  const gnet = await GNet();
+  // const gnet = await gnetAlready;
   const resCob = await gnet.get('/v2/cob?inicio=2022-05-01T00:00:00Z&fim=2022-05-03T23:59:00Z');
   res.send(resCob.data);
 });
