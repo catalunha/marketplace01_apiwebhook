@@ -557,6 +557,7 @@ app.listen(8000,()=>{
 
 ```
 # cod do nginx após atualizacao do certbot e do webhook no server. conf final
+
 ```
 ubuntu@ip-172-31-30-120:~$ cat /etc/nginx/sites-available/gn-api-pix.conf 
 server {
