@@ -132,8 +132,8 @@ api.brintec.org	A	1 hour
 http://api.brintec.org:8000/
 
 export as variaveis de ambiente novamente
-ubuntu@ip-172-31-30-120:~$ export gnet_client_id="Client_Id_9b4f5551b6d4f23baa9c3a483cf2a5dcaea2509e"
-ubuntu@ip-172-31-30-120:~$ export gnet_client_secret="Client_Secret_ce8e1cb51703e533e4c050d0152584638594d2a5"
+ubuntu@ip-172-31-30-120:~$ export gnet_client_id=""
+ubuntu@ip-172-31-30-120:~$ export gnet_client_secret=""
 ubuntu@ip-172-31-30-120:~$ export gnet_endpoint="https://api-pix.gerencianet.com.br"
 ubuntu@ip-172-31-30-120:~$ export gnet_cert="producao-365498-marketplace01-p.p12"
 ubuntu@ip-172-31-30-120:~$ cd marketplace01_apiwebhook/
